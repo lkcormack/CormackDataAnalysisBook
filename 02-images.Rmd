@@ -8,4 +8,5 @@ Hm. Hard to tell what's going on, isn't it. Maybe there is a white band running 
 
 This situation is tightly analogous to our situation after we've done an experiment; we have some data in the form of a sample (like the image) consisting of individual observations (like the pixels) that give us an incomplete picture of whatever we are studying. Our job as scientists is to figure out what's going on based on our data, just like we could try and figure out what the image above portrays. This would actually be quite difficult, because we simply don't have enough pixels! Let's pool our funds and buy some more! Here's the same image but with 8% of pixels now turned on:  
 ![An image with 8% of the pixels turned on.](./images/imageSampling/downSampedIms/LizP08.png)
-Now we can start to make some guesses about the scene at least... perhaps some snowy mountains under a cloudy sky in the background with maybe three yellow flowers in the foreground? 
+  \
+  Now we can start to make some guesses about the scene at least... perhaps some snowy mountains under a cloudy sky in the background with maybe three yellow flowers in the foreground?  
