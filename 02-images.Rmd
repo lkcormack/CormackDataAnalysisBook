@@ -1,0 +1,3 @@
+# Experiments as pictures
+
+When we take a picture of a scene, like a selfie of you and your friends, we create a digital image that consists of individual *picture elements*, called pixels for short. Each pixel is an "*observation*" of the color and brightness of a single point in the scene.
