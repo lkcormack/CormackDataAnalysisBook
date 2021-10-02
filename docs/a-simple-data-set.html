@@ -139,7 +139,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Why we need data analysis tools</a></li>
 <li class="chapter" data-level="2" data-path="experiments-as-photography.html"><a href="experiments-as-photography.html"><i class="fa fa-check"></i><b>2</b> Experiments as photography</a></li>
-<li class="chapter" data-level="3" data-path="a-simple-data-set.html"><a href="a-simple-data-set.html"><i class="fa fa-check"></i><b>3</b> A simple data set</a></li>
+<li class="chapter" data-level="3" data-path="a-simple-data-set.html"><a href="a-simple-data-set.html"><i class="fa fa-check"></i><b>3</b> A simple data set</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="a-simple-data-set.html"><a href="a-simple-data-set.html#looking-at-the-data"><i class="fa fa-check"></i><b>3.1</b> Looking at the data</a></li>
+<li class="chapter" data-level="3.2" data-path="a-simple-data-set.html"><a href="a-simple-data-set.html#making-a-bet"><i class="fa fa-check"></i><b>3.2</b> Making a bet</a></li>
+<li class="chapter" data-level="3.3" data-path="a-simple-data-set.html"><a href="a-simple-data-set.html#estimating-some-numbers"><i class="fa fa-check"></i><b>3.3</b> Estimating some numbers</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -180,28 +185,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    157.
 ## # … with 90 more rows</code></pre>
 <p>These are the heights of 100 female humans (in cm). This is called a <strong>sample</strong> of data, consisting of 100 <strong>observations</strong> of the variable height from the <strong>population</strong> of all human females.<br />
-We can’t tell much from just looking at this long list of numbers, so we will make a <strong>histogram</strong> of the numbers using <code>ggplot()</code> and <code>geom_histogram()</code> (when commands like the one below are long, you can scroll horizontally to see the whole thing).</p>
+</p>
+<div id="looking-at-the-data" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Looking at the data</h2>
+<p>We can’t tell much from just looking at this long list of numbers, so we will make a <strong>histogram</strong> of the numbers using <code>ggplot()</code> and <code>geom_histogram()</code> (when commands like the one below are long, you can scroll horizontally to see the whole thing).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-simple-data-set.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /><br />
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /><br />
 If we read this histogram from left to right, it tells us that there was one women around 150cm tall, three women about 152cm, two women about 154cm, and so on. Too make this histogram, we took the range of heights from the shortest to the tallest woman in the sample, and divided that range into 2cm wide <strong>bins</strong> (this is the <code>binwidth = 2</code> argument in the call to <code>ggplot(...)</code> above). The number of women whose height fell in each bin was counted and is displayed as the heights of the bars.<br />
 From looking at this <strong>sample distribution</strong>, we can see that the heights all cluster around a central value, and that values greater or smaller than this get increasingly rare. This property gives the data a sort of bell shape that is characteristic of a <strong>normal distribution</strong>.<br />
 <br />
 We can make the bell shape a little more clear by looking at the data as more of a smooth curve.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-simple-data-set.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /><br />
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /><br />
 Without getting too technical just yet, this is an estimate of a <strong>probability density function</strong> for the heights of women based upon our sample of data. Where a distribution like this is high, whatever is on the x axis is more common; where it is low, the corresponding x values are rare. So, looking at this curve, we can guess that, if we went out and measured new (female) people, heights between 160 and 165cm would be relatively common, whereas heights above 170cm and below 155cm would be relatively rare.<br />
  <br />
 As my teenage daughter would say “It’s actually not that deep.”<br />
-<br />
-When talking about probabilities, I think it is useful for us to ask ourselves “If we were forced to place a bet, what bet would we place?” So if some crazy person captured us and put us in a dungeon and said “I’m going to select a person at random and measure their height — if you can guess their height to withing 2cm, I’ll let you go”, what height would we pick? Looking at the curve, the smart bet would be something like 161cm, and a really stupid bet would be, say, anything over 175cm.<br />
+</p>
+</div>
+<div id="making-a-bet" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Making a bet</h2>
+<p>When talking about probabilities, I think it is useful for us to ask ourselves “If we were forced to place a bet, what bet would we place?” So if some crazy person captured us and put us in a dungeon and said “I’m going to select a person at random and measure their height — if you can guess their height to withing 2cm, I’ll let you go”, what height would we pick? Looking at the curve, the smart bet would be something like 161cm, and a really stupid bet would be, say, anything over 175cm.<br />
  <br />
 You can think about the y axis of curves like this as <em>smartness of bet</em> — the lower the curve, the more stupid the bet. Sometimes — and this is actually a key concept — <em>you make a bet that is so wrong, that you decide you must be using the wrong curve</em>.<br />
  <br />
 Imagine that we guessed 161cm and we were told “Sorry, the person was 182cm tall.” Asked to play again the next day, we again guessed 161cm and were told “Sorry, today’s person was 180cm tall.” and so on and so on. At some point — after thinking carefully about exactly what our tormentor actually said — we would realize (I hope!) that <em>we were using the wrong curve</em>, and our capture <em>must be sampling male, not female, heights</em>!<br />
 <br />
 Make sure you wrap your head around that logic, because we’ll be using it again (and again, and again).<br />
+<br />
 </p>
+</div>
+<div id="estimating-some-numbers" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Estimating some numbers</h2>
+<p> </p>
 
+</div>
 </div>
             </section>
 

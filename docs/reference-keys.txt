@@ -1,3 +1,6 @@
 why-we-need-data-analysis-tools
 experiments-as-photography
 a-simple-data-set
+looking-at-the-data
+making-a-bet
+estimating-some-numbers
