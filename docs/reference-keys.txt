@@ -1,3 +1,4 @@
 why-we-need-data-analysis-tools
 experiments-as-photography
 a-caucus-race-and-a-long-tale
+a-simple-data-set

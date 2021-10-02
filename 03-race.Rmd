@@ -1,1 +1,19 @@
-# A caucus-race and a long tale
+# A simple data set
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+library(tidyverse)
+```
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+hts <- read_csv("./datasets/heights.csv", show_col_types = FALSE)
+```
+
+I've loaded the data into a tibble named "hts" that has a column (variable) named "heights":
+```{r}
+hts
+```
+These are the heights of 100 female humans (in cm).
+
+```{r}
+ggplot(hts, aes(x = heights)) + geom_histogram(fill = "gray", color = "black", binwidth = 2)
+```
