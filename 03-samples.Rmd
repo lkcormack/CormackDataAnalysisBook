@@ -12,8 +12,12 @@ I've loaded the data into a tibble named "hts" that has a column (variable) name
 ```{r}
 hts
 ```
-These are the heights of 100 female humans (in cm). We can tell much from just looking at this long list of numbers, we will make a **histogram** of the numbers.
+These are the heights of 100 female humans (in cm). This is called a **sample** of data, consisting of 100 **observations** of the **variable** height from the **population** of all human females.  
+We can't tell much from just looking at this long list of numbers, so we will make a **histogram** of the numbers using `ggplot()` and `geom_histogram()` (when commands like the one below are long, you can scroll horizontally to see the whole thing).
 
 ```{r}
 ggplot(hts, aes(x = heights)) + geom_histogram(fill = "gray", color = "black", binwidth = 2)
 ```
+  \
+  If we read this histogram from left to right, it tells us that there was one women around 150cm tall, three women about 152cm, two women about 154cm, and so on. Too make this histogram, we took the range of heights from the shortest to the tallest woman in the sample, and divided that range into 2cm wide **bins** (this is the `binwidth = 2` argument in the call to `ggplot(...)` above). The number of women whose height fell in each bin was counted and is displayed as the heights of the bars.  
+  From looking at this **sample distribution**, we can see that the heights all cluster around a central value, and that values greater or smaller than this get increasingly rare. This property gives the data a sort of bell-shape that is characteristic of a **normal distribution**.

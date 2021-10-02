@@ -177,9 +177,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    168.
 ## 10    157.
 ## # … with 90 more rows</code></pre>
-<p>These are the heights of 100 female humans (in cm). We can tell much from just looking at this long list of numbers, we will make a <strong>histogram</strong> of the numbers.</p>
+<p>These are the heights of 100 female humans (in cm). This is called a <strong>sample</strong> of data, consisting of 100 <strong>observations</strong> of the <strong>variable</strong> height from the <strong>population</strong> of all human females.<br />
+We can’t tell much from just looking at this long list of numbers, so we will make a <strong>histogram</strong> of the numbers using <code>ggplot()</code> and <code>geom_histogram()</code> (when commands like the one below are long, you can scroll horizontally to see the whole thing).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="a-simple-data-set.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /><br />
+If we read this histogram from left to right, it tells us that there was one women around 150cm tall, three women about 152cm, two women about 154cm, and so on. Too make this histogram, we took the range of heights from the shortest to the tallest woman in the sample, and divided that range into 2cm wide <strong>bins</strong> (this is the <code>binwidth = 2</code> argument in the call to <code>ggplot(...)</code> above). The number of women whose height fell in each bin was counted and is displayed as the heights of the bars.<br />
+From looking at this <strong>sample distribution</strong>, we can see that the heights all cluster around a central value, and that values greater or smaller than this get increasingly rare. This property gives the data a sort of bell-shape that is characteristic of a <strong>normal distribution</strong>.</p>
 
 </div>
             </section>
