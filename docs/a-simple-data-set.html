@@ -161,8 +161,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="a-simple-data-set" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> A simple data set</h1>
-<p>I’ve loaded the data into a tibble named “hts” that has a column (variable) named “heights” using <code>read_csv()</code> from the tidyverse:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-simple-data-set.html#cb1-1" aria-hidden="true" tabindex="-1"></a>hts</span></code></pre></div>
+<p>Let’s look a simple set of data in order to make sure we start off with a common set of simple tools and vocabulary. First — and we will always do this when we start a data analysis session — we will load the tidyverse data analysis and plotting tools:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-simple-data-set.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>After that, we can load whatever data we want using <code>read_csv()</code> from the tidyverse. I’ve loaded our simple data set into a <strong>tibble</strong>, a neat table of data, named “hts” that has a <strong>variable</strong> (column) named “heights”:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-simple-data-set.html#cb2-1" aria-hidden="true" tabindex="-1"></a>hts</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 1
 ##    heights
 ##      &lt;dbl&gt;
@@ -177,12 +179,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    168.
 ## 10    157.
 ## # … with 90 more rows</code></pre>
-<p>These are the heights of 100 female humans (in cm). This is called a <strong>sample</strong> of data, consisting of 100 <strong>observations</strong> of the <strong>variable</strong> height from the <strong>population</strong> of all human females.<br />
+<p>These are the heights of 100 female humans (in cm). This is called a <strong>sample</strong> of data, consisting of 100 <strong>observations</strong> of the variable height from the <strong>population</strong> of all human females.<br />
 We can’t tell much from just looking at this long list of numbers, so we will make a <strong>histogram</strong> of the numbers using <code>ggplot()</code> and <code>geom_histogram()</code> (when commands like the one below are long, you can scroll horizontally to see the whole thing).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="a-simple-data-set.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /><br />
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-simple-data-set.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /><br />
 If we read this histogram from left to right, it tells us that there was one women around 150cm tall, three women about 152cm, two women about 154cm, and so on. Too make this histogram, we took the range of heights from the shortest to the tallest woman in the sample, and divided that range into 2cm wide <strong>bins</strong> (this is the <code>binwidth = 2</code> argument in the call to <code>ggplot(...)</code> above). The number of women whose height fell in each bin was counted and is displayed as the heights of the bars.<br />
-From looking at this <strong>sample distribution</strong>, we can see that the heights all cluster around a central value, and that values greater or smaller than this get increasingly rare. This property gives the data a sort of bell-shape that is characteristic of a <strong>normal distribution</strong>.</p>
+From looking at this <strong>sample distribution</strong>, we can see that the heights all cluster around a central value, and that values greater or smaller than this get increasingly rare. This property gives the data a sort of bell shape that is characteristic of a <strong>normal distribution</strong>.<br />
+<br />
+We can make the bell shape a little more clear by looking at the data as more of a smooth curve.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-simple-data-set.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /><br />
+Without getting too technical just yet, this is an estimate of a <strong>probability density function</strong> for the heights of women based upon our sample of data. Where a distribution like this is high, whatever is on the x axis is more common; where it is low, the corresponding x values are rare. So, looking at this curve, we can guess that, if we went out and measured new (female) people, heights between 160 and 165cm would be relatively common, whereas heights above 170cm and below 155cm would be relatively rare.<br />
+ <br />
+As my teenage daughter would say “It’s actually not that deep.”<br />
+<br />
+When talking about probabilities, I think it is useful for us to ask ourselves “If we were forced to place a bet, what bet would we place?” So if some crazy person captured us and put us in a dungeon and said “I’m going to select a person at random and measure their height — if you can guess their height to withing 2cm, I’ll let you go”, what height would we pick? Looking at the curve, the smart bet would be something like 161cm, and a really stupid bet would be, say, anything over 175cm.<br />
+ <br />
+You can think about the y axis of curves like this as <em>smartness of bet</em> — the lower the curve, the more stupid the bet. Sometimes — and this is actually a key concept — <em>you make a bet that is so wrong, that you decide you must be using the wrong curve</em>.<br />
+ <br />
+Imagine that we guessed 161cm and we were told “Sorry, the person was 182cm tall.” Asked to play again the next day, we again guessed 161cm and were told “Sorry, today’s person was 180cm tall.” and so on and so on. At some point — after thinking carefully about exactly what our tormentor actually said — we would realize (I hope!) that <em>we were using the wrong curve</em>, and our capture <em>must be sampling male, not female, heights</em>!<br />
+<br />
+Make sure you wrap your head around that logic, because we’ll be using it again (and again, and again).<br />
+</p>
 
 </div>
             </section>
