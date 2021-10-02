@@ -8,11 +8,11 @@ library(tidyverse)
 hts <- read_csv("./datasets/heights.csv", show_col_types = FALSE)
 ```
 
-I've loaded the data into a tibble named "hts" that has a column (variable) named "heights":
+I've loaded the data into a tibble named "hts" that has a column (variable) named "heights" using `read_csv()` from the tidyverse:
 ```{r}
 hts
 ```
-These are the heights of 100 female humans (in cm).
+These are the heights of 100 female humans (in cm). We can tell much from just looking at this long list of numbers, we will make a **histogram** of the numbers.
 
 ```{r}
 ggplot(hts, aes(x = heights)) + geom_histogram(fill = "gray", color = "black", binwidth = 2)

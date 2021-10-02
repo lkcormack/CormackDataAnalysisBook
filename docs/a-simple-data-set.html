@@ -161,7 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="a-simple-data-set" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> A simple data set</h1>
-<p>I’ve loaded the data into a tibble named “hts” that has a column (variable) named “heights”:</p>
+<p>I’ve loaded the data into a tibble named “hts” that has a column (variable) named “heights” using <code>read_csv()</code> from the tidyverse:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-simple-data-set.html#cb1-1" aria-hidden="true" tabindex="-1"></a>hts</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 1
 ##    heights
@@ -177,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    168.
 ## 10    157.
 ## # … with 90 more rows</code></pre>
-<p>These are the heights of 100 female humans (in cm).</p>
+<p>These are the heights of 100 female humans (in cm). We can tell much from just looking at this long list of numbers, we will make a <strong>histogram</strong> of the numbers.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="a-simple-data-set.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hts, <span class="fu">aes</span>(<span class="at">x =</span> heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 
