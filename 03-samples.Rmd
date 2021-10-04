@@ -42,11 +42,11 @@ When talking about probabilities, I think it is useful for us to ask ourselves "
   \     
 You can think about the y axis of curves like this as *smartness of bet* --- the lower the curve, the more stupid the bet. Sometimes --- and this is actually a key concept --- *you make a bet that is so wrong, that you decide you must be using the wrong curve*.   \
    \    
-Imagine that we guessed 161cm and we were told "Sorry, the person was 182cm tall." Asked to play again the next day, we again guessed 161cm and were told "Sorry, today's person was 180cm tall." and so on and so on. At some point --- after thinking carefully about exactly what our tormentor actually said --- we would realize (I hope!) that *we were using the wrong curve*, and our capture *must be sampling male, not female, heights*!  \
+Imagine that we guessed 161cm and we were told "Sorry, the person was 182cm tall." Asked to play again the next day, we again guessed 161cm and were told "Sorry, today's person was 180cm tall." and so on and so on. At some point --- after thinking carefully about exactly what our tormentor actually said --- we would realize (I hope!) that *we were using the wrong curve*, and our captor *must be sampling male, not female, heights*!  \
   \
 Make sure you wrap your head around that logic, because we'll be using it again (and again, and again).  \
 \
 
-## Estimating some numbers
+## Estimating some numbers 
 
 \ 
